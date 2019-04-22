@@ -1,0 +1,37 @@
+class My_MpNeuron :
+  
+  def __init__ (self):
+    self.b = None
+    
+  def model(self, X):
+    
+    return 1 if np.sum(X) >= self.b else 0    
+
+  def train (self, X, Y , epoochs = 1 , Lrate = 1)  :
+    
+    self.b = 0
+    
+    Y_pred = []
+    for x in X:
+      result = self.model(x)
+      Y_pred.append(result)
+      
+      
+    for i in range (epoochs) :  
+      for x, y, z  in zip(X,Y, Y_pred):
+
+          if y == 1 and z == 0:
+            self.b = self.b -  (1 * Lrate)
+          elif y == 0 and z == 1:
+            self.b = self.b +  (1 * Lrate)
+          
+    accuracy = accuracy_score(Y_pred, Y) 
+    print(accuracy)
+    
+  def test (self, X , Y) :
+    Y_pred = []
+    for x in X:
+      result = self.model(x)
+      Y_pred.append(result)
+    accuracy = accuracy_score(Y_pred, Y)
+    print(accuracy)
