@@ -1,3 +1,6 @@
+# I wrote this code for the contest of One-Fourth Labs.
+# The objective of the contest was to the prediction of Like - Dislike of mobile phone for a dataset using the MP Neuron algorithm
+
 class My_MpNeuron :
   
   def __init__ (self):
