@@ -1,0 +1,49 @@
+# I wrote this code for the contest of One Fourth Labs.
+# The objectibve of the contest was to to prediction of Like - Dislike of mobile phone for a dataset using MP Neuron algorithm.
+
+class Mymodel :
+  
+  def __init__ (self):
+    self.w = None
+    self.b = None
+    
+  def model(self, X):
+    return 1 if (np.dot(self.w, X) >= self.b) else 0  
+
+  def train(self, X, Yt, epochs = 1, lr = 1 ):
+
+    self.w = np.ones(X.shape[1])
+    self.b = 0
+
+    accuracy_plot = []
+    for i in range(epochs) :
+
+      Y_pred = []
+      for x in X:
+        result = self.model(x)
+        Y_pred.append(result)
+
+  
+      for x, y, z  in zip(X,Y, Y_pred):
+
+        if y == 1 and z == 0:
+          self.w = self.w + lr * x
+          self.b = self.b - lr * 1
+        elif y == 0 and z == 1:
+          self.w = self.w - lr * x
+          self.b = self.b + lr * 1    
+
+      accuracy = accuracy_score(Y_pred, Yt)
+      accuracy_plot.append(accuracy) 
+    print(max(accuracy_plot))  
+    plt.plot(accuracy_plot)  
+    print(self.w)
+    
+  def test (self, X , Y) :
+    Y_pred = []
+    for x in X:
+      result = self.model(x)
+      Y_pred.append(result)
+    accuracy = accuracy_score(Y_pred, Y)
+    print(accuracy)
+    print(self.w)
