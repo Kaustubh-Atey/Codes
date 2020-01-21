@@ -1,5 +1,5 @@
 # I wrote this code for the contest of One-Fourth Labs.
-# The objective of the contest was to the prediction of Like - Dislike of mobile phone for a dataset using the Perceptron algorithm.
+# The objective of the contest was the prediction of Like - Dislike of mobile phones for a dataset using the Perceptron algorithm.
 
 class Mymodel :
   
